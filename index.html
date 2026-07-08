@@ -267,6 +267,42 @@ body { padding-top: var(--cg-strip-h); }
 .cg-colophon-note { margin: 4px 0 0; color: #9a9aa8; }
 @media (max-width: 640px) { .cg-strip-label { display: none; } }
 @media (prefers-reduced-motion: reduce) { .cg-skip { transition: none; } }
+
+/* ---- Mobile reading view (touch / small screens) ------------------------------------- */
+/* The immersive per-구 template is desktop-only. On touch devices and narrow screens the
+   .cg-read view is shown instead — it uses only safe, high-contrast CSS so text can never
+   go invisible on iOS Safari (no background-clip:text, backdrop-filter, 100vh, :hover-gated
+   reveals, or mix-blend-mode). Fully namespaced + generator-controlled. */
+.cg-read { display: none; }
+@media (hover: none) and (pointer: coarse), (max-width: 768px) {
+  /* Neutralise immersive templates that lock scrolling / lock the viewport on <body>. */
+  html, body { overflow-x: hidden !important; overflow-y: auto !important; height: auto !important;
+    min-height: 0 !important; position: static !important; touch-action: auto !important; background: #ffffff !important; }
+  .cg-immersive { display: none !important; }
+  .cg-read { display: block; }
+}
+.cg-read { max-width: 720px; margin: 0 auto; padding: 20px 18px 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  color: #17171f; background: #ffffff; line-height: 1.75; -webkit-text-size-adjust: 100%; }
+.cg-read * { max-width: 100%; box-sizing: border-box; }
+.cg-read-head { padding: 8px 0 16px; border-bottom: 3px solid var(--cg-ra, #2d5bff); margin-bottom: 20px; }
+.cg-read-eyebrow { margin: 0 0 4px; color: var(--cg-rd, #333); font-weight: 700; font-size: 15px; letter-spacing: .02em; }
+.cg-read-head h1 { margin: 0; font-size: clamp(30px, 8vw, 40px); line-height: 1.15; color: #14141c; font-weight: 800; }
+.cg-read h2 { font-size: 20px; margin: 30px 0 10px; padding-left: 11px; color: #14141c; font-weight: 700;
+  border-left: 5px solid var(--cg-ra, #2d5bff); }
+.cg-read p { margin: 0 0 12px; font-size: 17px; color: #23232d; }
+.cg-read section { margin: 0; }
+.cg-read ul { margin: 8px 0 0; padding-left: 20px; }
+.cg-read li { margin: 8px 0; font-size: 16px; color: #23232d; }
+.cg-read li strong { color: #111119; font-weight: 700; }
+.cg-read .facts, .cg-read .symbols { list-style: none; padding: 14px 16px; margin: 8px 0 0;
+  background: #f5f6fa; border: 1px solid #e6e8f0; border-radius: 12px; }
+.cg-read .faq details { border: 1px solid #e6e8f0; border-radius: 10px; padding: 10px 14px; margin: 8px 0; background: #fbfbfd; }
+.cg-read .faq summary { cursor: pointer; font-weight: 700; font-size: 16px; color: #14141c; }
+.cg-read .faq details p { margin: 8px 0 2px; color: #44454f; }
+.cg-read a { color: #1a46d8; word-break: break-word; }
+.cg-read .sources { font-size: 14px; color: #55565f; }
+.cg-read .sources a { color: #3a5bd0; }
 </style>
 </head>
 <body>
@@ -275,6 +311,7 @@ body { padding-top: var(--cg-strip-h); }
     <span class="cg-ad">AD</span><span class="cg-strip-label">후원 파트너</span><span class="cg-strip-list"><a class="cg-strip-item" href="https://ikoffices.com" rel="sponsored noopener" target="_blank">일광오피스</a><span class="cg-strip-dot" aria-hidden="true">·</span><a class="cg-strip-item" href="https://mobidicsaju.com" rel="sponsored noopener" target="_blank">모비딕 사주</a><span class="cg-strip-dot" aria-hidden="true">·</span><a class="cg-strip-item" href="https://www.foodskorea.com/" rel="sponsored noopener" target="_blank">전국팔도 식품도감</a><span class="cg-strip-dot" aria-hidden="true">·</span><a class="cg-strip-item" href="https://myflowmakers.com" rel="sponsored noopener" target="_blank">마이플로우메이커스</a><span class="cg-strip-dot" aria-hidden="true">·</span><a class="cg-strip-item" href="https://yeonlijispace.com" rel="sponsored noopener" target="_blank">연리지 인테리어</a><span class="cg-strip-dot" aria-hidden="true">·</span><a class="cg-strip-item" href="https://yeonliji.io" rel="sponsored noopener" target="_blank">주식회사 연리지</a><span class="cg-strip-dot" aria-hidden="true">·</span><span class="cg-strip-item cg-strip-text">세무·법률 자문</span></span>
   </aside>
   <div id="cg-main" tabindex="-1"></div>
+  <div class="cg-immersive">
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap");
   @font-face{
@@ -1103,6 +1140,130 @@ body { padding-top: var(--cg-strip-h); }
   }
 })();
 </script>
+  </div>
+  <main class="cg-read" id="cg-read" role="main" lang="ko" style="--cg-ra:#2bab5a;--cg-ra2:#39d0c6;--cg-rd:#195730">
+    <header class="cg-read-head">
+      <p class="cg-read-eyebrow">대구광역시</p>
+      <h1>달서구</h1>
+    </header>
+    <div class="cg-read-body">
+      <section id="r-intro">
+        <h2>지역 소개</h2>
+        <p>달서구는 대구광역시 8개 자치구 가운데 인구가 가장 많은 곳으로, 성서산업단지의 공장 지대와 두류·상인·월배의 대규모 아파트 주거지가 나란히 공존하는 산업·주거 복합 지역이다. 구 이름 &#x27;달서(達西)&#x27;는 1938년까지 존재했던 경상북도 달성군 달서면에서 따온 것으로, &#x27;달구벌의 서쪽&#x27;이라는 지역 정체성을 그대로 담고 있다. 진천동 입석과 월성동·상인동 일대에서 청동기시대 유물이 대거 쏟아져 나와 &#x27;선사시대 대구의 수도&#x27;로 불릴 만큼 오래된 삶의 터전이기도 하다. 오늘날에는 두류공원의 이월드와 83타워, 대구수목원, 대구문화예술회관 등이 모여 대구 시민의 대표적 문화·여가 공간으로 자리 잡았다. 첨단 제조업과 활발한 생활 인프라, 풍부한 녹지가 어우러져 &#x27;일하고 쉬고 즐기는&#x27; 자족형 생활권을 이루는 것이 달서구의 얼굴이다.</p>
+      </section>
+      <section id="r-facts">
+        <h2>주요 통계</h2>
+        <ul class="facts">
+          <li>인구: 약 522,021명 (2024)</li>
+          <li>면적: 62.34 km²</li>
+          <li>신설: 1988년 1월 1일</li>
+        </ul>
+      </section>
+      <section id="r-history">
+        <h2>역사</h2>
+        <p>달서구 일대는 진천동 입석(사적 제411호)과 월성동·상인동·대천동 유적에서 구석기·신석기·청동기·철기시대에 이르는 유물이 잇따라 발굴되어, 대구의 역사를 2만 년 안팎으로 끌어올린 선사문화의 중심지로 평가받는다. 상인지구 개발 과정에서만 1만 3천여 점의 청동기 유물이 나와 이곳이 오래전부터 사람이 밀집해 살던 땅이었음을 증명했다. 근대 이전에는 대체로 경상북도 달성군에 속한 농촌 지역이었으며, 1958년과 1963년을 거치며 상당 지역이 대구시로 편입되었다. 대구 서남부의 도시 팽창과 성서·월배 지구 개발이 본격화되면서 1988년 1월 1일 서구·남구 일부를 떼어 달서구가 신설되었고, 같은 해 5월 자치구로 정식 승격되었다. 이후 성서산업단지 조성과 대단위 택지개발로 인구가 급증해 2000년대 초 60만 명을 넘어서며 대구 최대 인구 자치구로 성장하였다.</p>
+      </section>
+      <section id="r-geography">
+        <h2>지리·자연환경</h2>
+        <p>달서구는 대구 분지의 서남쪽에 자리하며 면적은 약 62.34㎢로, 북쪽과 서쪽으로 낙동강 지류인 금호강·진천천 유역의 평야가 펼쳐진다. 서쪽 성서 지역에는 용이 엎드린 형상이라 하여 이름 붙은 와룡산(臥龍山, 299.6m)이 병풍처럼 솟아 서구·성서와 경계를 이루고, 남쪽에는 청룡산·삼필봉·대덕산으로 이어지는 산줄기가 도원지와 월광수변공원을 감싼다. 구의 한복판을 진천천이 가로질러 흐르며 두류공원 안의 성당못과 남쪽의 도원지 같은 크고 작은 호수가 도심 속 수변 경관을 만든다. 대체로 서·남부는 산지와 저수지가 발달한 반면, 중·동부는 평탄한 시가지로 개발되어 아파트 단지와 산업단지가 밀집해 있다. 이러한 산·하천·저수지가 어우러진 지형 덕분에 도심 가까이에서 등산과 산책, 수변 휴식을 함께 즐길 수 있는 것이 특징이다.</p>
+      </section>
+      <section id="r-characteristics">
+        <h2>지역 특징</h2>
+        <p>달서구는 인구 약 52만 명(2024년 기준)으로 대구광역시 자치구 가운데 가장 인구가 많으며, 23개 행정동·24개 법정동으로 이루어져 있다. 이곡동·갈산동·신당동·장동 일원에 걸친 성서산업단지는 국토 동남권 최대 규모의 첨단 산업단지로, 기계·금속·전자 등 제조업체 수천 곳이 입주해 대구 지역 경제의 핵심 생산 거점 역할을 한다. 산업단지 배후로는 상인·월배·두류의 대규모 아파트 밀집 주거지가 형성되어, 일자리와 주거가 한 생활권 안에서 순환하는 자족형 도시 구조를 갖췄다. 청년층과 학생 인구 비중이 높고 학원가와 상권이 발달해 대구 서남부의 생활·소비 중심으로 기능한다. 구화는 장미, 구목은 은행나무, 구새는 비둘기이며, 두류공원 일대의 문화시설과 성서의 첨단 제조업이 공존하는 &#x27;산업과 문화의 균형&#x27;이 달서구를 규정하는 핵심 성격이다.</p>
+      </section>
+      <section id="r-landmarks">
+        <h2>대표 명소</h2>
+        <ul>
+          <li><strong>이월드·83타워</strong> — 두류공원 안에 자리한 도심 테마파크와 높이 202m의 83타워(대구타워)로, 놀이시설과 전망대·기획전시관을 갖추고 있다. 봄철 벚꽃 터널과 야경 명소로 유명해 대구를 대표하는 관광지로 꼽힌다.</li>
+          <li><strong>대구수목원</strong> — 쓰레기 매립장을 복원해 조성한 도심형 수목원으로, 침엽수원·활엽수원·약용식물원 등 21개 주제원에 400여 종 6만여 그루의 나무와 800여 종의 초화류를 갖췄다. 무료 개방되어 시민의 사철 산책·학습 공간으로 사랑받는다.</li>
+          <li><strong>성서산업단지</strong> — 이곡·갈산·신당·장동 일원에 조성된 국토 동남권 최대 규모의 첨단 산업단지로, 기계·금속·전자 업체 수천 곳이 입주해 있다. 달서구와 대구 지역 경제를 떠받치는 핵심 생산 거점이다.</li>
+          <li><strong>두류공원</strong> — 성당못을 중심으로 이월드·83타워·대구문화예술회관·코오롱야외음악당이 모여 있는 대구 최대의 도시공원이다. 문화·체육·휴식 기능이 한데 어우러진 시민의 대표적 여가 공간이다.</li>
+        </ul>
+      </section>
+      <section id="r-heritage">
+        <h2>문화유산·문화시설</h2>
+        <ul>
+          <li><strong>대구 진천동 입석</strong> — 사적 제411호로 지정된 청동기시대 선돌로, 1997년 발굴조사에서 제단 형태의 기단석이 드러나 단순한 고인돌 덮개돌이 아닌 의례용 선돌임이 밝혀졌다. 달서구가 선사문화의 중심지였음을 보여주는 대표 유적이다.</li>
+          <li><strong>월성동·상인동 선사유적</strong> — 구석기부터 철기시대에 이르는 지석묘·석곽묘·널무덤이 밀집해 &#x27;선사시대 대구의 수도&#x27;로 불리는 유적군이다. 상인지구에서만 1만 3천여 점의 청동기 유물이 출토되어 대구의 역사를 2만 년 안팎으로 끌어올렸다.</li>
+          <li><strong>대구방짜유기박물관</strong> — 대구문화예술회관 산하 기관으로, 두드려 만드는 전통 방짜유기(놋그릇)의 제작 과정과 유물을 전시하는 전문 박물관이다. 사라져 가는 전통 금속공예 문화를 보존·전승하는 공간이다.</li>
+          <li><strong>대구문화예술회관</strong> — 두류공원에 자리한 대구 대표 복합 공연·전시 시설로 팔공홀·비슬홀·달구벌홀과 미술관을 갖췄다. 코오롱야외음악당·향토역사관 등을 산하에 두고 지역 문화예술 활동의 거점 역할을 한다.</li>
+        </ul>
+      </section>
+      <section id="r-nature">
+        <h2>자연·휴식</h2>
+        <ul>
+          <li><strong>월광수변공원</strong> — 대덕산과 청룡산 계곡에 비친 달빛에서 이름을 딴 근린 호수공원으로, 수변 데크길 1.6km와 편백 숲길 1.2km를 잇는 총 2.8km 순환 산책로를 갖췄다. 웨딩테마공원으로 재단장되어 음악분수와 야경 명소로도 인기가 높다.</li>
+          <li><strong>와룡산</strong> — 세 봉우리가 용이 엎드린 형상을 이룬다 하여 이름 붙은 해발 299.6m의 산으로, 성서 지역의 진산이다. 정상에서 성서 시가지와 낙동강 일대가 한눈에 들어오는 대표적인 도심 근교 등산 코스다.</li>
+          <li><strong>도원지·청룡산 등산로</strong> — 달서구 남부의 저수지 도원지를 끼고 청룡산·삼필봉·대덕산으로 이어지는 자연 휴식·등산 공간이다. 물가와 숲길을 함께 걸을 수 있어 사철 산행객과 나들이객이 즐겨 찾는다.</li>
+          <li><strong>달서 선사시대로</strong> — 진천동 입석과 월성동·대천동 선사유적을 A·B·C 코스로 잇는 역사 탐방형 산책로다. 청동기 유적을 걸으며 감상하는 야외 학습·산책 코스로 조성되었다.</li>
+        </ul>
+      </section>
+      <section id="r-transport">
+        <h2>교통</h2>
+        <p>달서구는 대구 도시철도 1호선과 2호선이 모두 지나 대중교통 접근성이 우수하다. 1호선은 월배 지역을 관통하며 대곡·진천·월배·상인·월촌·송현 등의 역이 구내에 자리해 도심과 동대구 방면을 연결한다. 2호선은 문양에서 출발해 다사·성서·두류 방면으로 이어지며 이곡·용산·죽전·감삼·두류 등 여러 역이 성서산업단지와 두류공원 방면 통행을 담당한다. 도로 교통으로는 신천대로와 성서로, 달구벌대로가 구를 가로지르고, 중부내륙고속도로지선(옛 구마고속도로)의 성서·화원 나들목이 인접해 창원·마산 방면과 바로 연결된다. 성서산업단지 물류를 위한 간선도로망과 서대구 방면 진입로가 잘 갖춰져 있어 산업 화물과 통근 교통이 원활하다. 두류역·성서공단역 등 지하철역을 중심으로 시내버스 노선이 촘촘히 연계되어 구 전역의 이동이 편리하다.</p>
+      </section>
+      <section id="r-symbols">
+        <h2>지역 상징</h2>
+        <ul class="symbols">
+          <li>구화(꽃): 장미</li>
+          <li>구목(나무): 은행나무</li>
+          <li>구조(새): 비둘기</li>
+        </ul>
+      </section>
+      <section id="r-faq">
+        <h2>자주 묻는 질문</h2>
+        <div class="faq">
+          <details>
+            <summary>달서구청은 어디에 있나요?</summary>
+            <p>대구광역시 달서구 학산로 45(월성동)에 있습니다. 대구 도시철도 1호선 상인역·월배역 방면과 가까우며, 시내버스로도 접근할 수 있습니다.</p>
+          </details>
+          <details>
+            <summary>달서구는 대구에서 인구가 가장 많은 자치구인가요?</summary>
+            <p>네, 달서구는 약 52만 명(2024년 기준)으로 대구광역시 8개 자치구 가운데 인구가 가장 많습니다. 23개 행정동·24개 법정동으로 이루어져 있습니다.</p>
+          </details>
+          <details>
+            <summary>달서구 이름 &#x27;달서&#x27;는 무슨 뜻인가요?</summary>
+            <p>&#x27;달서(達西)&#x27;는 1938년까지 존재했던 경상북도 달성군 달서면에서 따온 이름으로, &#x27;달구벌(대구)의 서쪽&#x27;이라는 지역 정체성을 담고 있습니다.</p>
+          </details>
+          <details>
+            <summary>달서구에서 가족과 즐길 만한 곳은 어디인가요?</summary>
+            <p>두류공원의 이월드와 83타워, 무료 개방되는 대구수목원, 월광수변공원 산책로가 대표적입니다. 놀이·전망·산책·수목 학습을 한 지역에서 두루 즐길 수 있습니다.</p>
+          </details>
+          <details>
+            <summary>달서구는 왜 &#x27;선사시대 대구의 수도&#x27;로 불리나요?</summary>
+            <p>진천동 입석(사적 제411호)과 월성동·상인동 일대에서 청동기시대 유물이 대거 출토되었기 때문입니다. 상인지구에서만 1만 3천여 점의 유물이 나와 대구의 역사를 약 2만 년까지 끌어올렸습니다.</p>
+          </details>
+          <details>
+            <summary>달서구에는 지하철이 다니나요?</summary>
+            <p>네, 대구 도시철도 1호선과 2호선이 모두 지납니다. 1호선은 상인·월배·송현 등, 2호선은 두류·감삼·성서 방면 역을 통해 도심과 산업단지를 연결합니다.</p>
+          </details>
+        </div>
+      </section>
+      <section id="r-links">
+        <h2>공식 링크</h2>
+        <ul>
+          <li><a href="https://www.dalseo.daegu.kr/" rel="noopener">대구광역시 달서구청 공식 홈페이지</a></li>
+          <li><a href="https://www.dalseo.daegu.kr/tour/index.do" rel="noopener">달서구 문화관광 안내</a></li>
+        </ul>
+      </section>
+      <section id="r-github">
+        <h2>GitHub</h2>
+        <ul>
+          <li><a href="https://github.com/kr-daegu-dalseo" rel="noopener">GitHub 조직: kr-daegu-dalseo</a></li>
+          <li><a href="https://github.com/kr-daegu-dalseo/kr-daegu-dalseo.github.io" rel="noopener">이 사이트 저장소</a></li>
+        </ul>
+      </section>
+      <section id="r-sources">
+        <h2>출처</h2>
+        <ul class="sources">
+          <li><a href="https://ko.wikipedia.org/wiki/달서구" rel="noopener">달서구 - 위키백과</a> (조회 2026-07-08)</li>
+          <li><a href="https://daegu.grandculture.net/daegu/dalseogu/toc/GC40000016" rel="noopener">달서구는 선사시대 대구의 수도 - 대구역사문화대전</a> (조회 2026-07-08)</li>
+          <li><a href="https://encykorea.aks.ac.kr/Article/E0014137" rel="noopener">대구 진천동 입석 - 한국민족문화대백과사전</a> (조회 2026-07-08)</li>
+          <li><a href="https://encykorea.aks.ac.kr/Article/E0066976" rel="noopener">달서구(達西區) - 한국민족문화대백과사전</a> (조회 2026-07-08)</li>
+        </ul>
+      </section>
+    </div>
+  </main>
   <aside class="cg-sponsors" aria-label="후원 파트너 상세">
     <p class="cg-spon-head"><span class="cg-ad">AD</span> 후원 파트너 <small>이 링크는 광고이며 편집상의 추천이 아닙니다 (rel=&quot;sponsored&quot;).</small></p>
     <ul class="cg-spon-grid">
