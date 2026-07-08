@@ -221,444 +221,438 @@
 </head>
 <body>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Do+Hyeon&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap");
 
-:root {
-  --dalseo-red: #B71C1C;
-  --dalseo-gold: #FFD54F;
-  --dalseo-ink: #1a0d0d;
-  --dalseo-sky-top: #2b1414;
-  --dalseo-sky-mid: #6e2320;
-  --dalseo-haze: #f7ede0;
-}
+  .fw-root{
+    /* 이월드·83타워 감성: 핫핑크 관람차 + 민트 잔디 */
+    --fw-pink:#FF69B4;
+    --fw-pink-deep:#c73d84;
+    --fw-pink-soft:#ffd6ec;
+    --fw-pink-pale:#fff0f8;
+    --fw-mint:#98FF98;
+    --fw-mint-deep:#3fae63;
+    --fw-mint-soft:#e4ffe4;
+    --fw-night:#2a1030;
+    --fw-ink:#3a2436;
+    --fw-cream:#fffdfb;
+    font-family:"Jua","Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+    color:var(--fw-ink);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+  .fw-root *{box-sizing:border-box;}
 
-* { box-sizing: border-box; }
+  /* ===== 하늘 무대 (해질녘 두류공원) ===== */
+  .fw-stage{
+    position:relative;
+    border-radius:24px;
+    overflow:hidden;
+    padding:clamp(22px,4vw,40px) clamp(16px,4vw,44px) clamp(30px,5vw,54px);
+    background:
+      radial-gradient(140% 120% at 82% 8%, #ffd98f 0%, rgba(255,217,143,0) 42%),
+      linear-gradient(180deg,#3a1a52 0%, #7b3a86 30%, #ff9ec9 62%, #ffd0e6 78%, var(--fw-mint-soft) 78%, var(--fw-mint-soft) 100%);
+    isolation:isolate;
+  }
+  /* 잔디 언덕 실루엣 */
+  .fw-grass{
+    position:absolute;left:0;right:0;bottom:0;height:22%;z-index:1;pointer-events:none;
+    background:
+      radial-gradient(120% 100% at 20% 100%, var(--fw-mint) 0 40%, transparent 41%),
+      radial-gradient(120% 100% at 80% 100%, #7ff07f 0 44%, transparent 45%),
+      linear-gradient(180deg, transparent 0 30%, var(--fw-mint) 30% 100%);
+    opacity:.9;
+  }
+  /* 83타워 실루엣 */
+  .fw-tower{position:absolute;right:8%;bottom:20%;z-index:1;width:min(64px,14vw);pointer-events:none;opacity:.85;}
 
-.dalseo-root {
-  font-family: 'Noto Sans KR', system-ui, sans-serif;
-  color: var(--dalseo-ink);
-  background: var(--dalseo-haze);
-  overflow-x: hidden;
-  position: relative;
-  line-height: 1.75;
-}
+  .fw-head{position:relative;z-index:4;max-width:640px;}
+  .fw-eyebrow{
+    display:inline-block;
+    font-size:clamp(15px,2.6vw,20px);
+    color:var(--fw-pink-deep);
+    background:var(--fw-cream);
+    border:4px solid var(--fw-pink);
+    border-radius:999px;
+    padding:3px 20px;
+    box-shadow:0 4px 0 rgba(199,61,132,.28);
+  }
+  .fw-title{
+    margin:14px 0 6px;
+    font-family:"Jua","Noto Sans KR",sans-serif;
+    font-size:clamp(32px,7.5vw,60px);
+    line-height:1.04;
+    color:#fff;
+    text-shadow:0 2px 0 var(--fw-pink-deep), 0 5px 14px rgba(42,16,48,.45);
+  }
+  .fw-sub{
+    max-width:40ch;
+    font-size:clamp(15px,2.7vw,19px);
+    color:#4a2a3e;
+    background:rgba(255,255,255,.72);
+    border-radius:14px;
+    padding:10px 16px;
+    backdrop-filter:blur(2px);
+  }
+  .fw-hint{
+    margin-top:16px;
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:clamp(15px,2.4vw,19px);
+    color:var(--fw-pink-deep);
+    background:var(--fw-cream);
+    padding:5px 18px;border-radius:999px;
+    box-shadow:0 3px 0 rgba(199,61,132,.2);
+  }
+  .fw-hint .spin{display:inline-block;animation:fwPointSpin 2.4s linear infinite;}
+  @keyframes fwPointSpin{to{transform:rotate(360deg)}}
 
-/* ============ HERO: 타워 항공 줌아웃 ============ */
-.dalseo-stage {
-  position: relative;
-  min-height: 100vh;
-  background:
-    radial-gradient(120% 80% at 50% 120%, #8a2b26 0%, transparent 60%),
-    linear-gradient(180deg, var(--dalseo-sky-top) 0%, var(--dalseo-sky-mid) 55%, #b7502e 100%);
-  overflow: hidden;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 0;
-}
+  /* ===== 대관람차 무대 ===== */
+  .fw-wheel-wrap{
+    position:relative;z-index:3;
+    margin:clamp(14px,3vw,26px) auto 0;
+    width:100%;max-width:640px;
+  }
+  .fw-rail-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+    flex-wrap:wrap;margin:0 4px 6px;
+  }
+  .fw-rail-title{
+    font-size:clamp(19px,3.2vw,25px);color:var(--fw-pink-deep);margin:0;
+  }
+  .fw-rail-note{font-size:clamp(13px,2vw,16px);color:var(--fw-mint-deep);}
 
-/* 조감 도시 레이어 (스크롤 시 스케일 줌아웃) */
-.dalseo-aerial {
-  position: absolute;
-  inset: 0;
-  transform-origin: 50% 88%;
-  will-change: transform, opacity;
-  pointer-events: none;
-}
-.dalseo-aerial svg { width: 100%; height: 100%; display: block; }
+  /* JS가 켜지면 이 무대(관람차)가 나타난다. 기본은 숨김(폴백은 아래 리스트). */
+  .fw-ride{display:none;}
+  .fw-enhanced .fw-ride{display:block;}
+  .fw-enhanced .fw-fallback{display:none;}
 
-/* 83타워 */
-.tower-83 {
-  transform-origin: 50% 100%;
-  will-change: transform;
-}
+  .fw-ride.fw-stage-wheel{
+    position:relative;
+    width:min(92vw,560px);
+    aspect-ratio:1/1;
+    margin:6px auto 0;
+    touch-action:pan-y;
+  }
+  /* 관람차 지지 기둥 */
+  .fw-mast{
+    position:absolute;left:50%;bottom:-2%;transform:translateX(-50%);
+    width:0;height:0;z-index:1;
+    border-left:min(9vw,52px) solid transparent;
+    border-right:min(9vw,52px) solid transparent;
+    border-bottom:min(52%,290px) solid rgba(255,105,180,.16);
+  }
+  .fw-mast::after{
+    content:"";position:absolute;left:50%;top:min(38%,210px);transform:translateX(-50%);
+    width:min(24vw,140px);height:12px;border-radius:8px;
+    background:var(--fw-pink-deep);
+  }
 
-/* 헤로 타이포 */
-.dalseo-hero {
-  position: relative;
-  z-index: 5;
-  text-align: center;
-  color: #fff;
-  padding: clamp(60px, 12vh, 140px) 20px 40px;
-  width: 100%;
-  max-width: 960px;
-  will-change: transform, opacity;
-}
-.dalseo-kicker {
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 0.42em;
-  font-size: clamp(13px, 2.4vw, 20px);
-  color: var(--dalseo-gold);
-  text-shadow: 0 2px 12px rgba(0,0,0,.45);
-  margin: 0 0 8px;
-  padding-left: 0.42em;
-}
-.dalseo-hero h1 {
-  font-family: 'Do Hyeon', 'Noto Sans KR', sans-serif;
-  font-weight: 400;
-  font-size: clamp(44px, 12vw, 132px);
-  line-height: 0.92;
-  margin: 4px 0 10px;
-  text-shadow: 0 6px 30px rgba(0,0,0,.5);
-  letter-spacing: -0.01em;
-}
-.dalseo-hero h1 .sido {
-  display: block;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(20px, 4vw, 40px);
-  letter-spacing: 0.3em;
-  color: var(--dalseo-gold);
-  margin-bottom: 6px;
-  -webkit-text-stroke: 0;
-}
-.dalseo-hero-sub {
-  font-size: clamp(14px, 2.5vw, 19px);
-  color: #ffeede;
-  max-width: 640px;
-  margin: 0 auto;
-  text-shadow: 0 2px 10px rgba(0,0,0,.5);
-  font-weight: 300;
-}
-.dalseo-scrollcue {
-  position: absolute;
-  left: 50%;
-  bottom: 26px;
-  transform: translateX(-50%);
-  z-index: 6;
-  color: var(--dalseo-gold);
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 0.3em;
-  font-size: 13px;
-  text-align: center;
-  opacity: 0.9;
-  will-change: opacity;
-}
-.dalseo-scrollcue span {
-  display: block;
-  width: 1px; height: 42px;
-  margin: 8px auto 0;
-  background: linear-gradient(var(--dalseo-gold), transparent);
-  animation: cueDrop 1.8s ease-in-out infinite;
-}
-@keyframes cueDrop {
-  0%,100% { transform: scaleY(.4); opacity: .4; transform-origin: top; }
-  50% { transform: scaleY(1); opacity: 1; transform-origin: top; }
-}
+  /* 회전하는 바퀴 */
+  .fw-wheel{
+    position:absolute;inset:6%;
+    border-radius:50%;
+    border:4px solid var(--fw-pink);
+    box-shadow:0 0 0 4px rgba(255,105,180,.18), inset 0 0 0 2px var(--fw-mint);
+    transition:transform .7s cubic-bezier(.22,.9,.28,1);
+    will-change:transform;
+  }
+  .fw-wheel.dragging{transition:none;}
+  /* 바퀴 살(spoke) SVG */
+  .fw-spokes{position:absolute;inset:-4px;pointer-events:none;}
+  /* 허브(중심 원) */
+  .fw-hub{
+    position:absolute;top:50%;left:50%;
+    width:16%;height:16%;transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:var(--fw-cream);
+    border:4px solid var(--fw-pink);
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;font-size:clamp(11px,2vw,14px);color:var(--fw-pink-deep);
+    z-index:6;line-height:1.15;
+  }
 
-/* ============ 본문 셸 ============ */
-.dalseo-body {
-  position: relative;
-  z-index: 3;
-  background:
-    linear-gradient(180deg, transparent 0%, var(--dalseo-haze) 90px),
-    var(--dalseo-haze);
-  margin-top: -60px;
-  padding: 80px 20px 90px;
-}
-.dalseo-content {
-  max-width: 820px;
-  margin: 0 auto;
-}
+  /* 각 캐빈(관람차 칸) = 하나의 섹션 */
+  .fw-cabin{
+    --cab: clamp(58px, 13%, 78px);
+    position:absolute;top:50%;left:50%;
+    width:var(--cab);height:var(--cab);
+    margin:calc(var(--cab) / -2) 0 0 calc(var(--cab) / -2);
+    border-radius:50%;
+    background:var(--fw-cream);
+    border:4px solid var(--fw-pink);
+    box-shadow:0 4px 0 rgba(199,61,132,.22);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    z-index:5;
+    transition:transform .3s ease, background .2s ease, border-color .2s ease;
+  }
+  /* 캐빈은 바퀴가 돌아도 수평 유지(counter-rotate는 JS가 적용) */
+  .fw-cabin-inner{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:2px;padding:4px;text-align:center;pointer-events:none;
+    transition:transform .7s cubic-bezier(.22,.9,.28,1);
+  }
+  .fw-cabin .fw-ic{font-size:clamp(17px,3.4vw,22px);line-height:1;}
+  .fw-cabin .fw-lb{
+    font-size:clamp(9px,1.8vw,11.5px);color:var(--fw-pink-deep);
+    line-height:1.05;max-width:64px;
+  }
+  .fw-cabin:hover{background:var(--fw-pink-soft);}
+  .fw-cabin[aria-current="true"]{
+    background:var(--fw-mint);border-color:var(--fw-pink-deep);
+    transform:scale(1.14);
+  }
+  .fw-cabin[aria-current="true"] .fw-lb{color:#215a30;}
 
-/* 컨텐츠 섹션 서식 */
-.dalseo-content section {
-  position: relative;
-  margin: 0 0 46px;
-  padding: 30px 30px 30px 34px;
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 10px 40px -22px rgba(120,20,20,.5);
-  border-left: 5px solid var(--dalseo-red);
-  opacity: 0;
-  transform: translateY(34px) scale(.985);
-  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
-}
-.dalseo-content section.in { opacity: 1; transform: none; }
-/* JS 꺼졌을 때 폴백: 무조건 보이게 */
-.no-js .dalseo-content section { opacity: 1; transform: none; }
+  /* 최상단(12시) 하이라이트 포인터 */
+  .fw-topmark{
+    position:absolute;top:-2%;left:50%;transform:translateX(-50%);
+    z-index:7;color:var(--fw-pink-deep);font-size:22px;
+    filter:drop-shadow(0 2px 0 #fff);
+  }
 
-.dalseo-content section::before {
-  counter-increment: dseo;
-  content: counter(dseo, decimal-leading-zero);
-  position: absolute;
-  top: -18px; left: 24px;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 30px;
-  color: var(--dalseo-gold);
-  background: var(--dalseo-red);
-  padding: 2px 12px 0;
-  border-radius: 3px;
-  letter-spacing: 0.08em;
-  box-shadow: 0 6px 16px -6px rgba(183,28,28,.7);
-}
-.dalseo-content { counter-reset: dseo; }
+  /* ===== 하단 컨트롤 ===== */
+  .fw-controls{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    margin:14px 0 2px;flex-wrap:wrap;
+  }
+  .fw-btn{
+    width:46px;height:46px;border-radius:50%;
+    border:4px solid var(--fw-pink);background:var(--fw-cream);
+    color:var(--fw-pink-deep);font-size:20px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 3px 0 rgba(199,61,132,.22);
+    font-family:inherit;
+  }
+  .fw-btn:hover{background:var(--fw-pink);color:#fff;}
+  .fw-btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(199,61,132,.22);}
+  .fw-play{
+    padding:0 20px;height:46px;width:auto;border-radius:999px;font-size:15px;gap:8px;
+  }
 
-.dalseo-content h2 {
-  font-family: 'Do Hyeon', 'Noto Sans KR', sans-serif;
-  font-weight: 400;
-  font-size: clamp(22px, 4.5vw, 30px);
-  color: var(--dalseo-red);
-  margin: 6px 0 14px;
-  letter-spacing: -0.01em;
-}
-.dalseo-content h3 {
-  font-family: 'Do Hyeon', sans-serif;
-  color: var(--dalseo-red);
-  font-size: 19px;
-  margin: 18px 0 10px;
-}
-.dalseo-content p { margin: 0 0 12px; font-size: 16px; color: #2a1a1a; }
-.dalseo-content a { color: var(--dalseo-red); text-decoration: underline; text-underline-offset: 3px; }
-.dalseo-content ul { padding-left: 20px; }
-.dalseo-content li { margin: 6px 0; }
+  /* ===== 팝업(캐빈을 열면 뜨는 관람석 카드) ===== */
+  .fw-pop-overlay{
+    display:none;
+    min-height:1px;
+    margin-top:16px;
+  }
+  .fw-pop-overlay.open{display:block;}
+  .fw-pop{
+    position:relative;
+    background:var(--fw-cream);
+    border:4px solid var(--fw-pink);
+    border-radius:22px;
+    padding:clamp(20px,3vw,30px) clamp(18px,3vw,30px) clamp(22px,3vw,30px);
+    box-shadow:0 12px 34px -20px rgba(42,16,48,.6);
+    animation:fwPop .4s cubic-bezier(.2,1.1,.35,1) both;
+  }
+  @keyframes fwPop{
+    0%{transform:scale(.7) translateY(18px);opacity:0}
+    100%{transform:scale(1) translateY(0);opacity:1}
+  }
+  /* 팝업 상단 관람차 곤돌라 걸이 장식 */
+  .fw-pop::before{
+    content:"";position:absolute;top:-16px;left:50%;transform:translateX(-50%);
+    width:26px;height:26px;border-radius:50%;
+    background:var(--fw-mint);border:4px solid var(--fw-pink);
+  }
+  .fw-pop-head{
+    display:flex;align-items:center;gap:12px;margin:0 0 6px;
+  }
+  .fw-pop-badge{
+    flex:0 0 auto;width:48px;height:48px;border-radius:50%;
+    background:var(--fw-pink-soft);border:4px solid var(--fw-pink);
+    display:flex;align-items:center;justify-content:center;font-size:22px;
+  }
+  .fw-pop-title{
+    font-size:clamp(20px,3.4vw,27px);color:var(--fw-pink-deep);margin:0;line-height:1.15;
+  }
+  .fw-pop-close{
+    position:absolute;top:12px;right:14px;
+    width:38px;height:38px;border-radius:50%;
+    border:4px solid var(--fw-pink);background:#fff;color:var(--fw-pink-deep);
+    font-size:18px;cursor:pointer;line-height:1;font-family:inherit;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .fw-pop-close:hover{background:var(--fw-pink);color:#fff;}
+  .fw-pop-body{margin-top:8px;}
+  .fw-pop-body p{margin:0 0 12px;font-size:15.5px;color:#4a3a42;}
+  .fw-pop-body p:last-child{margin-bottom:0;}
 
-/* .facts */
-.dalseo-content .facts {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 12px;
-}
-.dalseo-content .facts li {
-  background: linear-gradient(180deg, #fff, #fff7e6);
-  border: 1px solid #f0dca6;
-  border-radius: 6px;
-  padding: 14px 16px;
-  margin: 0;
-  font-size: 15px;
-  box-shadow: 0 6px 18px -14px rgba(183,28,28,.6);
-}
+  /* 팝업 내 리스트/카드 재사용 스타일 (섹션 원본 마크업 대응) */
+  .fw-pop-body ul{list-style:none;padding:0;margin:8px 0 0;}
+  .fw-pop-body ul.facts,
+  .fw-pop-body ul.symbols{display:grid;gap:10px;}
+  .fw-pop-body ul.facts li,
+  .fw-pop-body ul.symbols li{
+    background:#fff;border:2px solid var(--fw-pink-soft);
+    border-left:6px solid var(--fw-mint);border-radius:12px;
+    padding:9px 14px;font-size:14.6px;
+  }
+  .fw-pop-body ul:not(.facts):not(.symbols) li{
+    position:relative;padding:9px 6px 9px 26px;margin:0 0 4px;
+    font-size:14.8px;border-bottom:2px dashed var(--fw-pink-soft);
+  }
+  .fw-pop-body ul:not(.facts):not(.symbols) li::before{
+    content:"";position:absolute;left:4px;top:15px;width:12px;height:12px;
+    border-radius:50%;background:var(--fw-pink);border:2px solid var(--fw-mint);
+  }
+  .fw-pop-body ul li strong{color:var(--fw-pink-deep);}
+  .fw-pop-body .faq details{
+    background:#fff;border:2px solid var(--fw-pink-soft);border-radius:12px;
+    margin:8px 0;padding:2px 14px;
+  }
+  .fw-pop-body .faq summary{
+    cursor:pointer;list-style:none;position:relative;padding:11px 26px 11px 0;
+    font-family:"Jua","Noto Sans KR",sans-serif;font-size:16px;color:var(--fw-pink-deep);
+  }
+  .fw-pop-body .faq summary::-webkit-details-marker{display:none;}
+  .fw-pop-body .faq summary::after{
+    content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);
+    color:var(--fw-mint-deep);font-size:20px;transition:transform .3s ease;
+  }
+  .fw-pop-body .faq details[open] summary::after{transform:translateY(-50%) rotate(45deg);color:var(--fw-pink);}
+  .fw-pop-body .faq details p{font-size:14.3px;color:#54444a;padding:0 0 12px;}
+  .fw-pop-body a{color:var(--fw-pink-deep);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--fw-mint-deep);}
+  .fw-pop-body a:hover{text-decoration-color:var(--fw-pink);}
+  .fw-pop-body h2{
+    font-size:16px;color:var(--fw-pink-deep);margin:14px 0 6px;
+    padding-top:12px;border-top:2px dashed var(--fw-pink-soft);
+  }
+  .fw-pop-body > h2:first-child{border-top:none;padding-top:0;margin-top:0;}
 
-/* .symbols */
-.dalseo-content .symbols {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.dalseo-content .symbols li {
-  margin: 0;
-  padding: 8px 16px;
-  background: var(--dalseo-red);
-  color: var(--dalseo-gold);
-  border-radius: 999px;
-  font-family: 'Do Hyeon', sans-serif;
-  font-size: 15px;
-  letter-spacing: 0.02em;
-}
+  /* 좌우 캐빈 목록 바로가기 칩 */
+  .fw-chips{
+    display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0 0;
+  }
+  .fw-chip{
+    font-family:inherit;font-size:13px;cursor:pointer;
+    background:#fff;border:3px solid var(--fw-pink-soft);color:var(--fw-pink-deep);
+    border-radius:999px;padding:5px 14px;
+  }
+  .fw-chip:hover{border-color:var(--fw-pink);background:var(--fw-pink-pale);}
+  .fw-chip[aria-current="true"]{background:var(--fw-mint);border-color:var(--fw-pink-deep);color:#215a30;}
 
-/* .faq (details/summary) */
-.dalseo-content .faq { margin-top: 4px; }
-.dalseo-content .faq details {
-  border-bottom: 1px solid #f0dca6;
-  padding: 6px 0;
-}
-.dalseo-content .faq summary {
-  cursor: pointer;
-  font-family: 'Do Hyeon', sans-serif;
-  font-size: 17px;
-  color: var(--dalseo-ink);
-  padding: 10px 8px 10px 30px;
-  position: relative;
-  list-style: none;
-}
-.dalseo-content .faq summary::-webkit-details-marker { display: none; }
-.dalseo-content .faq summary::before {
-  content: "Q";
-  font-family: 'Bebas Neue', sans-serif;
-  position: absolute; left: 6px; top: 9px;
-  color: var(--dalseo-red);
-  font-size: 20px;
-  line-height: 1.3;
-}
-.dalseo-content .faq details[open] summary { color: var(--dalseo-red); }
-.dalseo-content .faq details > *:not(summary) {
-  padding: 0 8px 12px 30px;
-  font-size: 15px;
-  color: #3a2626;
-}
+  .fw-foot{
+    text-align:center;margin:20px 0 4px;
+    font-size:16px;color:var(--fw-pink-deep);
+  }
 
-/* github/sources 섹션 링크 강조 */
-.dalseo-content #github, .dalseo-content #sources { border-left-color: var(--dalseo-gold); }
-.dalseo-content #github h2, .dalseo-content #sources h2 { color: #8a1414; }
+  /* ===== 폴백(자바스크립트 OFF): 관람차 없이도 9섹션 전부 읽힘 ===== */
+  .fw-fallback{
+    margin-top:14px;
+    background:var(--fw-cream);
+    border:4px solid var(--fw-pink);
+    border-radius:22px;
+    padding:clamp(18px,3vw,28px);
+  }
+  .fw-fallback .content{display:block;}
+  .fw-fallback section{
+    margin:0 0 6px;padding:14px 0;border-bottom:2px dashed var(--fw-pink-soft);
+  }
+  .fw-fallback section:last-child{border-bottom:none;}
+  .fw-fallback h2{
+    font-family:"Jua","Noto Sans KR",sans-serif;
+    font-size:clamp(18px,3vw,23px);color:var(--fw-pink-deep);
+    margin:0 0 8px;display:flex;align-items:center;gap:9px;
+  }
+  .fw-fallback h2::before{
+    content:"";flex:0 0 auto;width:18px;height:18px;border-radius:50%;
+    background:var(--fw-pink);border:3px solid var(--fw-mint);
+  }
+  .fw-fallback p{margin:0 0 10px;font-size:15.3px;color:#4a3a42;}
+  .fw-fallback ul{padding-left:1.1rem;margin:6px 0;}
+  .fw-fallback li{margin:4px 0;font-size:14.8px;}
+  .fw-fallback li strong{color:var(--fw-pink-deep);}
+  .fw-fallback .faq summary{cursor:pointer;font-weight:700;color:var(--fw-pink-deep);}
+  .fw-fallback a{color:var(--fw-pink-deep);}
 
-/* ============ 랜드마크 티커 (JSON에서 향상 주입) ============ */
-.dalseo-landmarks {
-  position: relative;
-  z-index: 3;
-  background: var(--dalseo-red);
-  color: #fff;
-  overflow: hidden;
-  padding: 18px 0;
-  border-top: 3px solid var(--dalseo-gold);
-  border-bottom: 3px solid var(--dalseo-gold);
-}
-.dalseo-landmarks .rail {
-  display: flex;
-  gap: 42px;
-  white-space: nowrap;
-  width: max-content;
-  animation: railScroll 34s linear infinite;
-  will-change: transform;
-}
-.dalseo-landmarks:hover .rail { animation-play-state: paused; }
-.dalseo-landmarks .chip {
-  font-family: 'Do Hyeon', sans-serif;
-  font-size: 20px;
-  letter-spacing: 0.02em;
-}
-.dalseo-landmarks .chip b { color: var(--dalseo-gold); font-weight: 400; }
-.dalseo-landmarks .chip::before {
-  content: "▲";
-  color: var(--dalseo-gold);
-  font-size: 12px;
-  margin-right: 12px;
-  vertical-align: middle;
-}
-@keyframes railScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-/* 푸터 배지 */
-.dalseo-footbadge {
-  text-align: center;
-  padding: 40px 20px 20px;
-  background: var(--dalseo-haze);
-}
-.dalseo-footbadge .mark {
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 0.34em;
-  color: var(--dalseo-red);
-  font-size: 15px;
-}
-.dalseo-footbadge .mark span { color: var(--dalseo-gold); -webkit-text-stroke: .5px #b7502e; }
-
-@media (prefers-reduced-motion: reduce) {
-  .dalseo-landmarks .rail { animation: none; }
-  .dalseo-scrollcue span { animation: none; }
-  .dalseo-content section { transition: none; opacity: 1; transform: none; }
-}
-@media (max-width: 560px) {
-  .dalseo-content section { padding: 26px 18px 22px 22px; }
-  .dalseo-body { padding: 64px 12px 70px; }
-}
+  @media (prefers-reduced-motion:reduce){
+    .fw-wheel{transition:none;}
+    .fw-cabin-inner{transition:none;}
+    .fw-hint .spin{animation:none;}
+    .fw-pop{animation:none;}
+  }
+  @media (max-width:520px){
+    .fw-cabin .fw-lb{display:none;}
+    .fw-tower{display:none;}
+  }
 </style>
 
-<div class="dalseo-root no-js" id="dalseo-root">
+<div class="fw-root">
 
-  <!-- ===== HERO: 타워 항공 줌아웃 ===== -->
-  <div class="dalseo-stage" id="dalseoStage">
-    <!-- 조감 도시 레이어 (장식) -->
-    <div class="dalseo-aerial" id="dalseoAerial" aria-hidden="true">
-      <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="dseoGround" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#7a2a24"/>
-            <stop offset="1" stop-color="#4a1512"/>
-          </linearGradient>
-          <linearGradient id="dseoPark" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#3f5b2e"/>
-            <stop offset="1" stop-color="#243a1a"/>
-          </linearGradient>
-          <linearGradient id="dseoTower" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#FFD54F"/>
-            <stop offset="1" stop-color="#B71C1C"/>
-          </linearGradient>
-          <radialGradient id="dseoGlow" cx="50%" cy="30%" r="70%">
-            <stop offset="0" stop-color="#ffd54f" stop-opacity=".55"/>
-            <stop offset="1" stop-color="#ffd54f" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
+  <div class="fw-stage">
+    <div class="fw-grass" aria-hidden="true"></div>
 
-        <!-- 조감 지면 -->
-        <path d="M0 560 L1200 560 L1200 800 L0 800 Z" fill="url(#dseoGround)"/>
-        <!-- 두류공원 녹지 조감 -->
-        <ellipse cx="600" cy="640" rx="360" ry="120" fill="url(#dseoPark)" opacity="0.9"/>
-        <ellipse cx="600" cy="628" rx="250" ry="80" fill="#4a6a34" opacity="0.5"/>
+    <!-- 83타워 실루엣 장식 -->
+    <svg class="fw-tower" viewBox="0 0 60 200" aria-hidden="true">
+      <rect x="26" y="40" width="8" height="150" fill="#c73d84"/>
+      <ellipse cx="30" cy="40" rx="20" ry="12" fill="#ff9ec9"/>
+      <circle cx="30" cy="26" r="7" fill="#98FF98"/>
+      <rect x="28" y="6" width="4" height="18" fill="#c73d84"/>
+    </svg>
 
-        <!-- 도로 그리드(조감) -->
-        <g stroke="#ffd54f" stroke-opacity="0.14" stroke-width="2">
-          <path d="M0 600 L1200 600"/>
-          <path d="M0 680 L1200 680"/>
-          <path d="M300 560 L260 800"/>
-          <path d="M600 560 L600 800"/>
-          <path d="M900 560 L940 800"/>
-        </g>
-
-        <!-- 도시 실루엣 빌딩(멀리) -->
-        <g fill="#5a1e1a" opacity="0.85">
-          <rect x="60" y="470" width="46" height="130"/>
-          <rect x="120" y="500" width="34" height="100"/>
-          <rect x="170" y="440" width="52" height="160"/>
-          <rect x="980" y="460" width="48" height="140"/>
-          <rect x="1040" y="500" width="36" height="100"/>
-          <rect x="1090" y="430" width="54" height="170"/>
-        </g>
-        <!-- 이월드 조명 포인트 -->
-        <g fill="#FFD54F" opacity="0.85">
-          <circle cx="420" cy="600" r="4"/><circle cx="470" cy="612" r="3"/>
-          <circle cx="740" cy="608" r="4"/><circle cx="790" cy="600" r="3"/>
-          <circle cx="360" cy="620" r="3"/><circle cx="830" cy="618" r="3"/>
-        </g>
-
-        <!-- 83타워 (중앙, 스크롤 앵커) -->
-        <g class="tower-83" id="tower83">
-          <!-- 기단 -->
-          <path d="M568 600 L632 600 L616 560 L584 560 Z" fill="#6a2320"/>
-          <!-- 타워 몸통 -->
-          <rect x="592" y="240" width="16" height="330" fill="#8a2a26"/>
-          <rect x="595" y="240" width="10" height="330" fill="#a83b2f"/>
-          <!-- 전망대 볼 -->
-          <ellipse cx="600" cy="235" rx="40" ry="26" fill="url(#dseoTower)"/>
-          <ellipse cx="600" cy="230" rx="40" ry="12" fill="#FFD54F" opacity="0.9"/>
-          <rect x="596" y="150" width="8" height="70" fill="#8a2a26"/>
-          <!-- 첨탑 -->
-          <path d="M600 96 L604 150 L596 150 Z" fill="var(--dalseo-gold)"/>
-          <circle cx="600" cy="92" r="6" fill="#FFD54F"/>
-          <circle cx="600" cy="92" r="12" fill="url(#dseoGlow)"/>
-          <!-- 전망대 창 -->
-          <g fill="#B71C1C">
-            <rect x="576" y="228" width="6" height="6"/><rect x="588" y="228" width="6" height="6"/>
-            <rect x="606" y="228" width="6" height="6"/><rect x="618" y="228" width="6" height="6"/>
-          </g>
-        </g>
-
-        <!-- 상단 헤이즈 -->
-        <rect x="0" y="0" width="1200" height="220" fill="url(#dseoGlow)" opacity="0.3"/>
-      </svg>
+    <div class="fw-head">
+      <span class="fw-eyebrow">대구광역시 · 이월드 대관람차에서 내려다본 달구벌 서쪽</span>
+      <h1 class="fw-title">달서구 지역 정보 · 대구광역시</h1>
+      <p class="fw-sub">달서구는 대구광역시 8개 자치구 가운데 인구가 가장 많은 곳으로, 성서산업단지의 공장 지대와 두류·상인·월배의 대규모 아파트 주거지가 나란히 공존하는 산업·주거 복합 지역이다. 구 이름 &#x27;달서(達西)&#x27;는 1938년까지 존재했던 경상북도 달성군 달서면에서 따온 것으로, &#x27;달구벌의 서쪽&#x27;이라는 지역 정체성을 그대로 담고 있다. 진천동 입석과 월성동·상인동 일대에서 청동기시대 유물이 대거 쏟아져 나와 &#x27;선사시대 대구의 수도&#x27;로 불릴 만큼 오래된 삶의 터전이기도 하다. 오늘날에는 두류공원의 이월드와 83타워, 대구수목원, 대구문화예술회관 등이 모여 대구 시민의 대표적 문화·여가 공간으로 자리 잡았다. 첨단 제조업과 활발한 생활 인프라, 풍부한 녹지가 어우러져 &#x27;일하고 쉬고 즐기는&#x27; 자족형 생활권을 이루는 것이 달서구의 얼굴이다.</p>
+      <span class="fw-hint">
+        관람차를 돌려 아홉 칸을 열어보세요
+        <span class="spin" aria-hidden="true">✿</span>
+      </span>
     </div>
 
-    <!-- 헤로 카피 -->
-    <div class="dalseo-hero" id="dalseoHero">
-      <p class="dalseo-kicker">kr-daegu-dalseo</p>
-      <h1><span class="sido">대구광역시</span>달서구</h1>
-      <p class="dalseo-hero-sub">83타워에서 내려다본 달서의 하루 — 이월드의 불빛과 두류공원의 능선이 한 화면에 담기는 곳. 스크롤을 내려 도시를 조감으로 펼쳐 보세요.</p>
-    </div>
+    <div class="fw-wheel-wrap">
+      <div class="fw-rail-head">
+        <p class="fw-rail-title">달서 대관람차</p>
+        <span class="fw-rail-note">두류공원 하늘 위, 아홉 칸의 이야기</span>
+      </div>
 
-    <div class="dalseo-scrollcue" id="dalseoCue" aria-hidden="true">
-      ZOOM OUT
-      <span></span>
+      <!-- ★ JS ON: 관람차 무대. 캐빈은 아래 폴백 섹션에서 복제되어 채워진다. -->
+      <div class="fw-ride fw-stage-wheel" aria-hidden="true">
+        <div class="fw-mast"></div>
+        <div class="fw-topmark">▼</div>
+        <div class="fw-wheel" id="fw-wheel">
+          <svg class="fw-spokes" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <g stroke="#FF69B4" stroke-width="0.7" opacity="0.55">
+              <line x1="50" y1="50" x2="50" y2="4"/><line x1="50" y1="50" x2="82" y2="18"/>
+              <line x1="50" y1="50" x2="96" y2="50"/><line x1="50" y1="50" x2="82" y2="82"/>
+              <line x1="50" y1="50" x2="50" y2="96"/><line x1="50" y1="50" x2="18" y2="82"/>
+              <line x1="50" y1="50" x2="4" y2="50"/><line x1="50" y1="50" x2="18" y2="18"/>
+            </g>
+          </svg>
+          <div class="fw-hub" id="fw-hub">달서<br>WHEEL</div>
+        </div>
+      </div>
+
+      <div class="fw-controls fw-ride" aria-hidden="true">
+        <button class="fw-btn" id="fw-prev" type="button" aria-label="관람차 왼쪽으로 돌리기">‹</button>
+        <button class="fw-btn fw-play" id="fw-play" type="button">
+          <span id="fw-play-ic">▶</span><span id="fw-play-tx">자동 회전</span>
+        </button>
+        <button class="fw-btn" id="fw-next" type="button" aria-label="관람차 오른쪽으로 돌리기">›</button>
+      </div>
+
+      <div class="fw-chips fw-ride" id="fw-chips" role="tablist" aria-label="관람차 칸 바로가기" aria-hidden="true"></div>
+
+      <!-- 팝업(관람석) -->
+      <div class="fw-pop-overlay" id="fw-pop-overlay" role="dialog" aria-modal="false" aria-label="선택한 관람차 칸">
+        <div class="fw-pop">
+          <button class="fw-pop-close" id="fw-pop-close" type="button" aria-label="닫기">✕</button>
+          <div class="fw-pop-head">
+            <div class="fw-pop-badge" id="fw-pop-badge" aria-hidden="true">✿</div>
+            <h2 class="fw-pop-title" id="fw-pop-title">칸</h2>
+          </div>
+          <div class="fw-pop-body" id="fw-pop-body"></div>
+        </div>
+      </div>
+
+      <p class="fw-foot fw-ride" aria-hidden="true">— 봄이면 벚꽃, 밤이면 야경. 달서의 하늘 정원 —</p>
     </div>
   </div>
 
-  <!-- ===== 랜드마크 티커 (JSON landmarks로 향상) ===== -->
-  <div class="dalseo-landmarks" id="dalseoLandmarks" aria-hidden="true">
-    <div class="rail" id="dalseoRail">
-      <span class="chip">이월드 · 83타워</span>
-      <span class="chip">두류공원</span>
-      <span class="chip">성서산업단지</span>
-      <span class="chip">달서 별빛로드</span>
-      <span class="chip">이월드 · 83타워</span>
-      <span class="chip">두류공원</span>
-      <span class="chip">성서산업단지</span>
-      <span class="chip">달서 별빛로드</span>
-    </div>
-  </div>
-
-  <!-- ===== 본문: 9섹션 실제 텍스트 ===== -->
-  <div class="dalseo-body">
-    <div class="dalseo-content" id="dalseoContent">
-            <section id="intro">
+  <!-- ★★ 크롤 가능한 9섹션 실제 텍스트. JS가 꺼져도 이 블록은 그대로 읽힌다. ★★ -->
+  <div class="fw-fallback">
+          <section id="intro">
         <h2>지역 소개</h2>
         <p>달서구는 대구광역시 8개 자치구 가운데 인구가 가장 많은 곳으로, 성서산업단지의 공장 지대와 두류·상인·월배의 대규모 아파트 주거지가 나란히 공존하는 산업·주거 복합 지역이다. 구 이름 &#x27;달서(達西)&#x27;는 1938년까지 존재했던 경상북도 달성군 달서면에서 따온 것으로, &#x27;달구벌의 서쪽&#x27;이라는 지역 정체성을 그대로 담고 있다. 진천동 입석과 월성동·상인동 일대에서 청동기시대 유물이 대거 쏟아져 나와 &#x27;선사시대 대구의 수도&#x27;로 불릴 만큼 오래된 삶의 터전이기도 하다. 오늘날에는 두류공원의 이월드와 83타워, 대구수목원, 대구문화예술회관 등이 모여 대구 시민의 대표적 문화·여가 공간으로 자리 잡았다. 첨단 제조업과 활발한 생활 인프라, 풍부한 녹지가 어우러져 &#x27;일하고 쉬고 즐기는&#x27; 자족형 생활권을 이루는 것이 달서구의 얼굴이다.</p>
       </section>
@@ -773,111 +767,280 @@
           <li><a href="https://encykorea.aks.ac.kr/Article/E0066976" rel="noopener">달서구(達西區) - 한국민족문화대백과사전</a> (조회 2026-07-08)</li>
         </ul>
       </section>
-    </div>
   </div>
 
-  <div class="dalseo-footbadge">
-    <div class="mark">DALSEO <span>·</span> 대구광역시 달서구</div>
-  </div>
-
-  <!-- 향상 데이터(생성기 주입) -->
 </div>
 
 <script>
-(function () {
+(function(){
   "use strict";
-  var root = document.getElementById('dalseo-root');
-  if (!root) return;
-  root.classList.remove('no-js'); // JS 활성화 → 폴백 해제
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fallback = document.querySelector(".fw-fallback");
+  var wheel = document.getElementById("fw-wheel");
+  if(!fallback || !wheel) return;
 
-  /* ---- 1) 타워 항공 줌아웃: 스크롤 시 도시가 아래로 멀어짐 ---- */
-  var aerial = document.getElementById('dalseoAerial');
-  var hero = document.getElementById('dalseoHero');
-  var cue = document.getElementById('dalseoCue');
-  var stage = document.getElementById('dalseoStage');
-  var ticking = false;
+  var sections = Array.prototype.slice.call(fallback.querySelectorAll("section"));
+  if(!sections.length) return;
 
-  function onScroll() {
-    if (reduce || !stage) return;
-    var rect = stage.getBoundingClientRect();
-    var h = window.innerHeight || 800;
-    // 0(맨위) → 1(스테이지 완전히 지나감)
-    var prog = Math.min(1, Math.max(0, -rect.top / (rect.height * 0.9 || h)));
+  var root = wheel.closest(".fw-root");
 
-    // 도시 조감이 줌아웃(스케일 축소)되며 위로 물러남
-    var scale = 1 + prog * 0.85;            // 1 → 1.85 (관찰자가 상승 = 도시가 작아 보이도록 반대로 확대 후 페이드)
-    var lift = prog * -180;                 // 위로 이동
-    if (aerial) {
-      aerial.style.transform = 'translateY(' + lift + 'px) scale(' + scale + ')';
-      aerial.style.opacity = (1 - prog * 0.9).toFixed(3);
-    }
-    if (hero) {
-      hero.style.transform = 'translateY(' + (prog * 90) + 'px)';
-      hero.style.opacity = (1 - prog * 1.25).toFixed(3);
-    }
-    if (cue) cue.style.opacity = (1 - prog * 2.2).toFixed(3);
+  /* 섹션 id -> 캐빈 라벨/아이콘 (관람차 칸 표찰) */
+  var META = {
+    intro:          {ic:"✿", lb:"소개"},
+    facts:          {ic:"★", lb:"통계"},
+    history:        {ic:"⏳", lb:"역사"},
+    geography:      {ic:"⛰", lb:"자연"},
+    characteristics:{ic:"◎", lb:"특징"},
+    landmarks:      {ic:"☉", lb:"명소"},
+    heritage:       {ic:"◈", lb:"문화"},
+    nature:         {ic:"❀", lb:"휴식"},
+    transport:      {ic:"⇄", lb:"교통"},
+    symbols:        {ic:"♥", lb:"상징"},
+    faq:            {ic:"?",      lb:"FAQ"},
+    links:          {ic:"↗", lb:"링크"},
+    github:         {ic:"◐", lb:"GitHub"},
+    sources:        {ic:"§", lb:"출처"}
+  };
+  function metaFor(sec, i){
+    var id = sec.id || "";
+    if(META[id]) return META[id];
+    var h2 = sec.querySelector("h2");
+    return {ic:"✿", lb: h2 ? h2.textContent.trim().slice(0,3) : ("칸"+(i+1))};
   }
 
-  function requestTick() {
-    if (!ticking) {
-      window.requestAnimationFrame(function () { onScroll(); ticking = false; });
-      ticking = true;
+  root.classList.add("fw-enhanced");
+
+  var chipsWrap = document.getElementById("fw-chips");
+  var popOverlay = document.getElementById("fw-pop-overlay");
+  var popTitle = document.getElementById("fw-pop-title");
+  var popBadge = document.getElementById("fw-pop-badge");
+  var popBody = document.getElementById("fw-pop-body");
+  var popClose = document.getElementById("fw-pop-close");
+
+  var N = sections.length;
+  var cabins = [];
+  var chips = [];
+  var current = 0;
+
+  /* ---------- 캐빈 배치 (원형/Radial) ---------- */
+  var STEP = 360 / N;
+  sections.forEach(function(sec, i){
+    var m = metaFor(sec, i);
+
+    var cab = document.createElement("button");
+    cab.type = "button";
+    cab.className = "fw-cabin";
+    cab.setAttribute("role","tab");
+    var h2 = sec.querySelector("h2");
+    var label = h2 ? h2.textContent.trim() : m.lb;
+    cab.setAttribute("aria-label", label + " 칸 열기");
+    cab.dataset.index = i;
+
+    var inner = document.createElement("span");
+    inner.className = "fw-cabin-inner";
+    inner.innerHTML = '<span class="fw-ic" aria-hidden="true">'+m.ic+'</span><span class="fw-lb">'+m.lb+'</span>';
+    cab.appendChild(inner);
+
+    /* 바퀴 중심(50%,50%)에서 반지름 42%로 배치. 0deg=12시(상단), 시계방향 */
+    var ang = i * STEP;
+    var rad = (ang - 90) * Math.PI/180;
+    var R = 42;
+    var cx = 50 + R * Math.cos(rad);
+    var cy = 50 + R * Math.sin(rad);
+    cab.style.left = cx + "%";
+    cab.style.top  = cy + "%";
+    cab.dataset.angle = ang;
+
+    cab.addEventListener("click", function(){ stopAuto(); select(i, true); });
+    wheel.appendChild(cab);
+    cabins.push(cab);
+
+    /* 바로가기 칩 */
+    var chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "fw-chip";
+    chip.setAttribute("role","tab");
+    chip.textContent = m.lb;
+    chip.setAttribute("aria-label", label + " 로 이동");
+    chip.addEventListener("click", function(){ stopAuto(); select(i, true); });
+    chipsWrap.appendChild(chip);
+    chips.push(chip);
+  });
+
+  /* ---------- 바퀴 회전: 선택 칸은 항상 12시(꼭대기)로 ---------- */
+  var wheelRot = 0;
+
+  function applyRotation(){
+    wheel.style.transform = "rotate(" + wheelRot + "deg)";
+    cabins.forEach(function(c){
+      var inner = c.firstChild;
+      if(inner) inner.style.transform = "rotate(" + (-wheelRot) + "deg)";
+    });
+  }
+
+  function rotateToTop(i){
+    var target = -parseFloat(cabins[i].dataset.angle);
+    var delta = ((target - wheelRot) % 360 + 540) % 360 - 180;
+    wheelRot += delta;
+    applyRotation();
+  }
+
+  function select(i, openPopup){
+    i = (i % N + N) % N;
+    current = i;
+    rotateToTop(i);
+    cabins.forEach(function(c,idx){ c.setAttribute("aria-current", idx===i ? "true":"false"); });
+    chips.forEach(function(c,idx){ c.setAttribute("aria-current", idx===i ? "true":"false"); });
+    if(openPopup) fillPopup(i);
+  }
+
+  /* ---------- 팝업: 섹션 내용을 통째로 복제해 넣는다 ---------- */
+  function fillPopup(i){
+    var sec = sections[i];
+    var m = metaFor(sec, i);
+    var h2 = sec.querySelector("h2");
+    popTitle.textContent = h2 ? h2.textContent.trim() : m.lb;
+    popBadge.textContent = m.ic;
+
+    var clone = sec.cloneNode(true);
+    var dupH2 = clone.querySelector("h2");
+    if(dupH2) dupH2.parentNode.removeChild(dupH2);
+
+    popBody.innerHTML = "";
+    while(clone.firstChild){ popBody.appendChild(clone.firstChild); }
+
+    if(!popOverlay.classList.contains("open")){
+      popOverlay.classList.add("open");
     }
-  }
-  window.addEventListener('scroll', requestTick, { passive: true });
-  window.addEventListener('resize', requestTick, { passive: true });
-  onScroll();
-
-  /* ---- 2) 섹션 등장(줌인 리빌) ---- */
-  var sections = root.querySelectorAll('.dalseo-content section');
-  if ('IntersectionObserver' in window && !reduce) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    sections.forEach(function (s) { io.observe(s); });
-  } else {
-    sections.forEach(function (s) { s.classList.add('in'); });
+    try{ popOverlay.scrollIntoView({behavior: reduce ? "auto":"smooth", block:"nearest"}); }catch(_){}
   }
 
-  /* ---- 3) region-data JSON으로 랜드마크 티커 향상 ---- */
-  try {
-    var el = document.getElementById('region-data');
-    if (el && el.textContent && el.textContent.indexOf('{{') === -1) {
-      var data = JSON.parse(el.textContent);
-      var marks = [];
-      (data.landmarks || []).forEach(function (l) {
-        if (typeof l === 'string') marks.push(l);
-        else if (l && l.name) marks.push(l.name);
-      });
-      (data.nature_rest || []).forEach(function (n) {
-        if (typeof n === 'string') marks.push(n);
-        else if (n && n.name) marks.push(n.name);
-      });
-      marks = marks.filter(Boolean);
-      if (marks.length) {
-        var rail = document.getElementById('dalseoRail');
-        if (rail) {
-          var seq = marks.concat(marks); // 무한 스크롤용 2배
-          rail.innerHTML = seq.map(function (m) {
-            var t = String(m).replace(/</g, '&lt;');
-            return '<span class="chip">' + t + '</span>';
-          }).join('');
-        }
+  popClose.addEventListener("click", function(){
+    popOverlay.classList.remove("open");
+    cabins.forEach(function(c){ c.setAttribute("aria-current","false"); });
+    chips.forEach(function(c){ c.setAttribute("aria-current","false"); });
+  });
+
+  /* ---------- 좌우 버튼 / 키보드 ---------- */
+  document.getElementById("fw-prev").addEventListener("click", function(){ stopAuto(); select(current-1, true); });
+  document.getElementById("fw-next").addEventListener("click", function(){ stopAuto(); select(current+1, true); });
+
+  root.addEventListener("keydown", function(ev){
+    if(ev.key==="ArrowLeft"){ stopAuto(); select(current-1, true); ev.preventDefault(); }
+    else if(ev.key==="ArrowRight"){ stopAuto(); select(current+1, true); ev.preventDefault(); }
+    else if(ev.key==="Escape" && popOverlay.classList.contains("open")){ popClose.click(); }
+  });
+
+  /* ---------- 세로 휠로 관람차 회전(데스크톱 향상) ---------- */
+  var wheelAccum = 0, wheelLock = false;
+  wheel.parentElement.addEventListener("wheel", function(ev){
+    if(Math.abs(ev.deltaY) < Math.abs(ev.deltaX)) return;
+    ev.preventDefault();
+    stopAuto();
+    wheelAccum += ev.deltaY;
+    if(wheelLock) return;
+    if(Math.abs(wheelAccum) > 60){
+      var dir = wheelAccum > 0 ? 1 : -1;
+      wheelAccum = 0;
+      wheelLock = true;
+      select(current + dir, false);
+      setTimeout(function(){ wheelLock=false; }, 260);
+    }
+  }, {passive:false});
+
+  /* ---------- 드래그로 돌리기(터치/마우스) ---------- */
+  var dragging=false, lastAngle=0, moved=false;
+  function pointAngle(ev){
+    var r = wheel.getBoundingClientRect();
+    var cx = r.left + r.width/2, cy = r.top + r.height/2;
+    var px = (ev.touches ? ev.touches[0].clientX : ev.clientX);
+    var py = (ev.touches ? ev.touches[0].clientY : ev.clientY);
+    return Math.atan2(py-cy, px-cx) * 180/Math.PI;
+  }
+  function dragStart(ev){
+    dragging=true; moved=false; lastAngle=pointAngle(ev);
+    wheel.classList.add("dragging");
+    stopAuto();
+  }
+  function dragMove(ev){
+    if(!dragging) return;
+    var a = pointAngle(ev);
+    var d = a - lastAngle;
+    if(d>180) d-=360; if(d<-180) d+=360;
+    if(Math.abs(d)>1.2) moved=true;
+    lastAngle=a; wheelRot += d;
+    applyRotation();
+    if(ev.cancelable) ev.preventDefault();
+  }
+  function dragEnd(){
+    if(!dragging) return;
+    dragging=false; wheel.classList.remove("dragging");
+    if(!moved) return;
+    var best=0, bestDist=Infinity;
+    cabins.forEach(function(c,i){
+      var eff = ((parseFloat(c.dataset.angle) + wheelRot) % 360 + 360) % 360;
+      var dist = Math.min(eff, 360-eff);
+      if(dist<bestDist){ bestDist=dist; best=i; }
+    });
+    select(best, true);
+  }
+  wheel.addEventListener("mousedown", dragStart);
+  window.addEventListener("mousemove", dragMove);
+  window.addEventListener("mouseup", dragEnd);
+  wheel.addEventListener("touchstart", dragStart, {passive:true});
+  wheel.addEventListener("touchmove", dragMove, {passive:false});
+  wheel.addEventListener("touchend", dragEnd);
+
+  /* ---------- 자동 회전 ---------- */
+  var autoTimer=null;
+  var playBtn=document.getElementById("fw-play");
+  var playIc=document.getElementById("fw-play-ic");
+  var playTx=document.getElementById("fw-play-tx");
+  function startAuto(){
+    if(reduce) return;
+    stopAuto();
+    autoTimer=setInterval(function(){ select(current+1, false); }, 3200);
+    playIc.textContent="⏸"; playTx.textContent="정지";
+  }
+  function stopAuto(){
+    if(autoTimer){ clearInterval(autoTimer); autoTimer=null; }
+    playIc.textContent="▶"; playTx.textContent="자동 회전";
+  }
+  playBtn.addEventListener("click", function(){
+    if(autoTimer) stopAuto(); else startAuto();
+  });
+  document.addEventListener("visibilitychange", function(){
+    if(document.hidden) stopAuto();
+  });
+
+  /* ---------- 허브/노트에 region-data 감성 한 줄(읽기 전용) ---------- */
+  try{
+    var el=document.getElementById("region-data");
+    if(el){
+      var data=JSON.parse(el.textContent);
+      if(data && data.coords && typeof data.coords.lat==="number"){
+        var note=document.querySelector(".fw-rail-note");
+        if(note){ note.textContent="두류공원 하늘 위 · 북위 "+data.coords.lat.toFixed(2)+"°"; }
       }
-      // 헤로 서브를 intro 첫 문장으로 보강(선택적 향상)
-      if (data.intro) {
-        var sub = document.querySelector('.dalseo-hero-sub');
-        var first = String(data.intro).split(/(?<=[.!?。])\s/)[0];
-        if (sub && first && first.length > 12) {
-          sub.textContent = first;
-        }
+      if(data && data.sigungu){
+        var hub=document.getElementById("fw-hub");
+        if(hub){ hub.innerHTML = data.sigungu.replace("구","") + "<br>WHEEL"; }
       }
     }
-  } catch (err) { /* JSON 미주입/파싱 실패 시 정적 티커 유지 */ }
+  }catch(_){}
+
+  /* 초기: 첫 칸을 꼭대기에 세우되 팝업은 닫힌 상태 */
+  select(0, false);
+
+  /* 저모션이 아니면 관람차 예열(살아있음을 암시) */
+  if(!reduce){
+    requestAnimationFrame(function(){
+      wheelRot -= 8;
+      applyRotation();
+      setTimeout(function(){ select(0,false); }, 420);
+    });
+  }
 })();
 </script>
 </body>
